@@ -1,0 +1,4 @@
+header_tmpl: |+
+  #Configured By Ansible
+
+cl_license_server: 10.18.90.40

@@ -1,0 +1,116 @@
+---
+interfaces:
+  ex-r3-sw01:
+    vlan100:
+        alias: 'Host'
+        bridgeports: [swp1.100,swp3-15, swp47.100, swp48.100]
+    vlan110:
+        alias: 'Service'
+        bridgeports: [swp1.110,swp3-15.110, swp47.110, swp48.110]
+    vlan140:
+        alias: 'Cloud'
+        bridgeports: [swp3-15.140]
+    vlan199:
+        alias: 'Public'
+        bridgeports: [swp1.199,swp3-15.199, swp47.199]
+    swp1:
+        mtu: 9216
+    swp2:
+        mtu: 9216
+    swp3:
+        mtu: 9216
+    swp4:
+        mtu: 9216
+    swp5:
+        mtu: 9216
+    swp6:
+        mtu: 9216
+    swp7:
+        mtu: 9216
+    swp8:
+        mtu: 9216
+    swp9:
+        mtu: 9216
+    swp10:
+        mtu: 9216
+    swp11:
+        mtu: 9216
+    swp12:
+        mtu: 9216
+    swp13:
+        mtu: 9216
+    swp14:
+        mtu: 9216
+    swp15:
+        mtu: 9216
+    swp16:
+        mtu: 9216
+    swp17:
+        mtu: 9216
+    swp18:
+        mtu: 9216
+    swp19:
+        mtu: 9216
+    swp47:
+        mtu: 9216
+    swp48:
+        mtu: 9216
+  ex-r3-sw02:
+    vlan100:
+        alias: 'Host'
+        bridgeports: [swp1.100,swp47.100,swp3]
+    vlan110:
+        alias: 'Service'
+        bridgeports: [swp1.110,swp47.110]
+    vlan120:
+        alias: 'Management'
+        bridgeports: [swp7-swp22]
+    vlan140:
+        alias: 'Cloud'
+        bridgeports: [swp1.140,swp47.140]
+    vlan199:
+        alias: 'Public'
+        bridgeports: [swp1.199,swp47.199]
+    swp1:
+        mtu: 9216
+    swp2:
+        mtu: 9216
+    swp3:
+        mtu: 9216
+    swp4:
+        mtu: 9216
+    swp5:
+        mtu: 9216
+    swp6:
+        mtu: 9216
+    swp7:
+        mtu: 9216
+    swp8:
+        mtu: 9216
+    swp9:
+        mtu: 9216
+    swp10:
+        mtu: 9216
+    swp11:
+        mtu: 9216
+    swp12:
+        mtu: 9216
+    swp13:
+        mtu: 9216
+    swp14:
+        mtu: 9216
+    swp15:
+        mtu: 9216
+    swp16:
+        mtu: 9216
+    swp17:
+        mtu: 9216
+    swp18:
+        mtu: 9216
+    swp19:
+        mtu: 9216
+    swp47:
+        mtu: 9216
+    swp48:
+        mtu: 9216
+

@@ -1,0 +1,31 @@
+---
+
+- name: Create directory on persistant store
+  file: path=/mnt/persist/etc state=directory mode=0755 owner=root group=root
+
+- name: Verify directory exists in etc
+  file: path=/mnt/persist/etc/{{ item }} mode=0755 owner=root group=root state=directory
+  with_items: [cron.daily]
+
+- name: Remove Hourly Cron from persistant store
+  file: path=/mnt/persist/etc/cron.daily/backups state=absent
+
+- name: Cron copy of files to persistant storage
+  copy: src=backups dest=/etc/cron.daily/backups mode=0755 owner=root group=root
+
+- name: Configure hosts file
+  template: src=hosts.j2 dest=/etc/hosts mode=0644 owner=root group=root
+
+- name: Configure Hostname file
+  template: src=hostname.j2 dest=/etc/hostname mode=0644 owner=root group=root
+
+- name: configure MOTD
+  template: src=motd.j2 dest=/etc/motd
+
+- name: license switch
+  cl_license: >
+      src="http://{{ cl_license_server }}/cumuluslinux/license/{{ ansible_hostname }}.lic"
+      restart_switchd=yes
+
+- name: disable arp filter
+  sysctl: name=net.ipv4.conf.all.arp_filter value=0 state=present reload=yes

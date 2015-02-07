@@ -1,0 +1,9 @@
+---
+
+- name: configure L2/L3 interfaces on switch
+  cl_interface:
+    ifaceattrs: "{{ item.value }}"
+    name: "{{ item.key }}"
+    applyconfig: 'yes'
+  with_dict: interfaces[ansible_hostname]
+

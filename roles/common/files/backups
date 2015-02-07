@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Make backups of important stuff
+cp /etc/hosts /mnt/persist/etc/
+cp /etc/hostname /mnt/persist/etc/
+cp /etc/resolv.conf /mnt/persist/etc/
+cp -R /etc/quagga /mnt/persist/etc/
+cp -R /etc/ssh /mnt/persist/etc/
+cp -R /etc/network /mnt/persist/etc/
+

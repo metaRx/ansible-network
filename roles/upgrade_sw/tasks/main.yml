@@ -1,0 +1,19 @@
+---
+- name: Run one last backup before firmware update
+  shell: bash /etc/cron.hourly/backups
+
+- name: upgrade cumulus linux software.
+  cl_img_install: src="http://{{ cl_license_server }}/cumuluslinux/firmware/CumulusLinux-{{cl_version}}-powerpc.bin" switch_slot=yes
+  register: reboot_switch
+
+- name: reboot switch
+  shell: reboot
+  when: reboot_switch.changed == True
+
+- name: wait for the switch to come back
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=stopped
+  when: reboot_switch.changed == True
+
+- name: wait for cumulus switch to boot and respond to port 22
+  local_action: wait_for host="{{ inventory_hostname }}" port=22 delay=30 search_regex=OpenSSH timeout=600
+  when: reboot_switch.changed == True
